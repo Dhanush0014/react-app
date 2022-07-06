@@ -1,4 +1,4 @@
-import React ,{useState} from "react";
+import React ,{useState, useEffect} from "react";
 import './expense.css'
 
 const ExpenseForm = (props) => {
@@ -9,10 +9,16 @@ const ExpenseForm = (props) => {
     const year = date.getFullYear()
     const [title,setTitle] = useState(props.title);
 
+    useEffect(()=>{
+        setTitle(props.title)
+    },[props.title])
+
   const titleHandler = ()=>{
       setTitle('Updated!');
    }
    
+   console.log("Data send to form as "+title);
+
     return (
         <div className="expenses">
             <div className="expense_date">
